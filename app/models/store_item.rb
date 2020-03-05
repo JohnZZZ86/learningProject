@@ -1,4 +1,4 @@
 class StoreItem < ApplicationRecord
-  has_many :items, dependent: :destroy
-  has_many :stores, dependent: :destroy
+  belongs_to :store, dependent: :destroy
+  belongs_to :item, dependent: :destroy
 end

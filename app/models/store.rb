@@ -1,3 +1,4 @@
 class Store < ApplicationRecord
-  belongs_to :store_item
+  has_many :store_items
+  has_many :items, through: :store_items
 end
