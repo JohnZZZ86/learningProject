@@ -1,17 +1,16 @@
 class AddDataToItems < ActiveRecord::Migration[6.0]
-  def get_rand_item
-    CLOTHES = ["Shirt", "Pullover", "Socks", "Pants", "Jacket", "Hat", "Cap"]
-    SIZES = ["XXXS","XXS", "XS", "S", "M","L", "XL", "XXL","XXXL"]
-    COLORS = ["Red", "Black", "White", "Blue", "Green", "Brown"]
 
+  CLOTHES = ["Shirt", "Pullover", "Socks", "Pants", "Jacket", "Hat", "Cap"]
+  SIZES = ["XXXS","XXS", "XS", "S", "M","L", "XL", "XXL","XXXL"]
+  COLORS = ["Red", "Black", "White", "Blue", "Green", "Brown"]
+
+  def get_rand_item
     result_items = []
-    index = 0
     CLOTHES.each do |clothe|
       SIZES.each do |size|
         COLORS.each do |color|
-          if Item.exists("name = ? and size = ? and color = ?",clothe, size, color).empty?
+          if Item.exists?("name = ? and size = ? and color = ?",clothe, size, color)
             result_items << [ clothe, size, color ]
-            index += 1
           end
         end
       end
