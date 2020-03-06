@@ -1,7 +1,7 @@
 class AddDataToStoreItems < ActiveRecord::Migration[6.0]
 
-  COUNT_OF_ITEMS_EACH_STORE =200
-  RAND_QUANTITY =100
+  COUNT_OF_ITEMS_EACH_STORE = 200
+  RAND_QUANTITY = 100
 
   def change
     Store.all.each do |store|
