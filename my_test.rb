@@ -1,3 +1,6 @@
-require 'lib/get_unique_values_by_given_count'
+$LOAD_PATH << File.join(File.dirname(__FILE__), "lib")
+require 'get_unique_values_by_given_count.rb'
 
-puts "Result array - " + GetUniqueValuesGivenCount.new(3).generate_output.join.to_s
+GetUniqueValuesByGivenCount.new.output_stores
+
+
