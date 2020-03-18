@@ -45938,3 +45938,104 @@ Processing by StoresController#show as JSON
 Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 28.3ms | Allocations: 1810)
 
 
+Started GET "/" for 127.0.0.1 at 2020-03-18 11:29:50 +0300
+  [1m[35m (7.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by StoresController#index as HTML
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT DISTINCT `items`.`name` FROM `items`[0m
+  ↳ app/controllers/stores_controller.rb:6:in `index'
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT DISTINCT `items`.`color` FROM `items`[0m
+  ↳ app/controllers/stores_controller.rb:7:in `index'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT DISTINCT `items`.`size` FROM `items`[0m
+  ↳ app/controllers/stores_controller.rb:8:in `index'
+  Rendering stores/index.html.erb within layouts/application
+  [1m[36mStore Load (0.5ms)[0m  [1m[34mSELECT `stores`.* FROM `stores`[0m
+  ↳ app/views/stores/index.html.erb:3:in `collect'
+  Rendered stores/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 3970)
+Completed 200 OK in 188ms (Views: 148.3ms | ActiveRecord: 8.2ms | Allocations: 31616)
+
+
+Started GET "/stores/show?store=5&item_name=&item_color=&item_size=" for 127.0.0.1 at 2020-03-18 11:29:53 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"5", "item_name"=>"", "item_color"=>"", "item_size"=>"", "id"=>"show"}
+  [1m[36mStore Load (0.6ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 5 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = '' AND `items`.`size` = '' AND `items`.`color` = ''[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 5 AND 1=0[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 37ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 3791)
+
+
+Started GET "/stores/show?store=7&item_name=&item_color=&item_size=" for 127.0.0.1 at 2020-03-18 11:29:57 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"7", "item_name"=>"", "item_color"=>"", "item_size"=>"", "id"=>"show"}
+  [1m[36mStore Load (0.9ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = '' AND `items`.`size` = '' AND `items`.`color` = ''[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 7 AND 1=0[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 41ms (Views: 3.3ms | ActiveRecord: 2.1ms | Allocations: 1794)
+
+
+Started GET "/stores/show?store=7&item_name=Socks&item_color=&item_size=" for 127.0.0.1 at 2020-03-18 11:29:58 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"7", "item_name"=>"Socks", "item_color"=>"", "item_size"=>"", "id"=>"show"}
+  [1m[36mStore Load (1.2ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = 'Socks' AND `items`.`size` = '' AND `items`.`color` = ''[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 7 AND 1=0[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 41ms (Views: 5.0ms | ActiveRecord: 3.6ms | Allocations: 1794)
+
+
+Started GET "/stores/show?store=7&item_name=Pullover&item_color=&item_size=" for 127.0.0.1 at 2020-03-18 11:30:00 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"7", "item_name"=>"Pullover", "item_color"=>"", "item_size"=>"", "id"=>"show"}
+  [1m[36mStore Load (0.6ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = 'Pullover' AND `items`.`size` = '' AND `items`.`color` = ''[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 7 AND 1=0[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 1794)
+
+
+Started GET "/stores/show?store=7&item_name=Pullover&item_color=Red&item_size=" for 127.0.0.1 at 2020-03-18 11:30:02 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"7", "item_name"=>"Pullover", "item_color"=>"Red", "item_size"=>"", "id"=>"show"}
+  [1m[36mStore Load (0.5ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = 'Pullover' AND `items`.`size` = '' AND `items`.`color` = 'Red'[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 7 AND 1=0[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 38ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 1794)
+
+
+Started GET "/stores/show?store=7&item_name=Pullover&item_color=Red&item_size=XXXS" for 127.0.0.1 at 2020-03-18 11:30:04 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"7", "item_name"=>"Pullover", "item_color"=>"Red", "item_size"=>"XXXS", "id"=>"show"}
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = 'Pullover' AND `items`.`size` = 'XXXS' AND `items`.`color` = 'Red'[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 7 AND `store_items`.`item_id` = 62[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 11.9ms | Allocations: 1813)
+
+
+Started GET "/stores/show?store=7&item_name=Pullover&item_color=Red&item_size=XXS" for 127.0.0.1 at 2020-03-18 11:30:05 +0300
+Processing by StoresController#show as JSON
+  Parameters: {"store"=>"7", "item_name"=>"Pullover", "item_color"=>"Red", "item_size"=>"XXS", "id"=>"show"}
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:12:in `show'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `items`.`id` FROM `items` WHERE `items`.`name` = 'Pullover' AND `items`.`size` = 'XXS' AND `items`.`color` = 'Red'[0m
+  ↳ app/controllers/stores_controller.rb:13:in `show'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `store_items`.`quantity` FROM `store_items` WHERE `store_items`.`store_id` = 7 AND `store_items`.`item_id` = 68[0m
+  ↳ app/controllers/stores_controller.rb:14:in `show'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 1807)
+
+
