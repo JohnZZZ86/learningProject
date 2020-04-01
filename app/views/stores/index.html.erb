@@ -1,0 +1,129 @@
+<div class="container text-center" >
+  Store: <%= select_tag :stores%>
+  Item: <%= select_tag :items_name%>
+  Color: <%= select_tag :items_color%>
+  Size: <%= select_tag :items_size%>
+  <div>
+    Stock balance: <label id="quantity"></label>
+  </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/stores/show",
+            method: "GET",
+            dataType: "json",
+            data: {
+                store: $("#stores").val(),
+                item_name: $("#items_name").val(),
+                item_color: $("#items_color").val(),
+                item_size: $("#items_size").val()
+            },
+            success: function (response) {
+                var all_items = response["all_items"];
+                for(var index = 0; index < all_items["store"].length; index++){
+                    $("#stores").append('<option>' + all_items["store"][index] + '</option>');
+                }
+                document.getElementById('stores').selectedIndex  = 0;
+                for(var index = 0; index < all_items["items"].length; index++){
+                    $("#items_name").append('<option>' + all_items["items"][index] + '</option>');
+                }
+                document.getElementById('items_name').selectedIndex  = 0;
+                for(var index = 0; index < all_items["color"].length; index++){
+                    $("#items_color").append('<option>' + all_items["color"][index] + '</option>');
+                }
+                document.getElementById('items_color').selectedIndex  = 0;
+                for(var index = 0; index < all_items["size"].length; index++){
+                    $("#items_size").append('<option>' + all_items["size"][index] + '</option>');
+                }
+                document.getElementById('items_size').selectedIndex  = 0;
+            }
+        });
+    });
+    $("#stores").on('click', function () {
+        $.ajax({
+            url: "/stores/show",
+            method: "GET",
+            dataType: "json",
+            data: {
+                store: $("#stores option:selected").text(),
+            },
+            success: function (response) {
+                $("#items_name").empty();
+                $("#items_color").empty();
+                $("#items_size").empty();
+                var items_result = response["items_result"];
+                for(var index = 0; index < items_result["items"].length; index++){
+                    $("#items_name").append('<option>' + items_result["items"][index] + '</option>');
+                }
+                for(var index = 0; index < items_result["color"].length; index++){
+                    $("#items_color").append('<option>' + items_result["color"][index] + '</option>');
+                }
+                for(var index = 0; index < items_result["size"].length; index++){
+                    $("#items_size").append('<option>' + items_result["size"][index] + '</option>');
+                }
+            }
+        });
+    });
+
+    $("#items_name").on('click', function () {
+        $.ajax({
+            url: "/stores/show",
+            method: "GET",
+            dataType: "json",
+            data: {
+                store: $("#stores option:selected").text(),
+                item_name: $("#items_name option:selected").text(),
+            },
+            success: function (response) {
+                $("#items_color").empty();
+                $("#items_size").empty();
+                var items_result = response["items_result"];
+                for(var index = 0; index < items_result["color"].length; index++){
+                    $("#items_color").append('<option>' + items_result["color"][index] + '</option>');
+                }
+                for(var index = 0; index < items_result["size"].length; index++){
+                    $("#items_size").append('<option>' + items_result["size"][index] + '</option>');
+                }
+            }
+        });
+    });
+    $("#items_color").on('click', function () {
+        $.ajax({
+            url: "/stores/show",
+            method: "GET",
+            dataType: "json",
+            data: {
+                store: $("#stores option:selected").text(),
+                item_name: $("#items_name option:selected").text(),
+                item_color: $("#items_color option:selected").text(),
+            },
+            success: function (response) {
+                $("#items_size").empty();
+                var items_result = response["items_result"];
+                for(var index = 0; index < items_result["size"].length; index++){
+                    $("#items_size").append('<option>' + items_result["size"][index] + '</option>');
+                }
+            }
+        });
+    });
+    $(document).on("click", function () {
+        $.ajax({
+            url: "/stores/show",
+            type: "GET",
+            data: {
+                store: $("#stores option:selected").text(),
+                item_name: $("#items_name option:selected").text(),
+                item_color: $("#items_color option:selected").text(),
+                item_size: $("#items_size option:selected").text(),
+            },
+            dataType: "json",
+            success: function(response) {
+                document.getElementById('quantity').innerHTML =  response["quantity_current_store"];
+
+            }
+        });
+    });
+</script>
+
