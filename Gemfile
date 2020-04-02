@@ -5,7 +5,7 @@ ruby '2.7.0'
 gem 'rails'
 gem 'mysql2', group: :development
 gem 'listen'
-gem "webpacker"
+gem 'webpacker'
 gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'uglifier'
