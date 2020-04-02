@@ -17,6 +17,7 @@ default: &default
   password: root
   socket: /var/run/mysqld/mysqld.sock
   database: Learning
+  host: localhost
 
 development:
   <<: *default
