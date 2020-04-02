@@ -11,7 +11,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'bootstrap'
-
+gem 'pg'
 
 
 group :development do
