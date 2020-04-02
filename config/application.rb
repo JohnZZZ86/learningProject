@@ -7,7 +7,7 @@ module Learning
   class Application < Rails::Application
     config.load_defaults 6.0
     config.autoload_paths << Rails.root.join("lib")
-    config.assets.initialize_on_precompile = false
-    config.use_webpack = true
+      #config.assets.initialize_on_precompile = false
+      #config.use_webpack = true
   end
 end
