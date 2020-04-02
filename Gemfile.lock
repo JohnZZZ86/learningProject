@@ -118,7 +118,7 @@ GEM
       actionmailer (= 6.0.2.1)
       actionpack (= 6.0.2.1)
       actiontext (= 6.0.2.1)
-      actionview (= 6.0.2.1)
+      actionview (= 6.0.2.2)
       activejob (= 6.0.2.1)
       activemodel (= 6.0.2.1)
       activerecord (= 6.0.2.1)
